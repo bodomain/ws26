@@ -1,0 +1,173 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=2.0cm]{geometry}
+\usepackage{enumitem}
+\usepackage{parskip}
+\setlength{\parskip}{4pt}
+\setlength{\abovedisplayskip}{4pt}
+\setlength{\belowdisplayskip}{4pt}
+\setlength{\abovedisplayshortskip}{2pt}
+\setlength{\belowdisplayshortskip}{2pt}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\nz}{\norm{\cdot}_2}
+\newcommand{\ninf}{\norm{\cdot}_\infty}
+\newcommand{\nR}{\norm{\cdot}_{\R}}
+\newcommand{\nRz}{\norm{\cdot}_{\R^2}}
+\newcommand{\dm}{\,\mathrm{d}}
+
+\title{Einsendeaufgaben Lektion~1 -- Lösungen\\[2pt]
+\large 61211 Analysis, WS 2026/2027}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace{-1.2cm}
+
+% =====================================================================
+\section*{Aufgabe 1}
+
+\noindent
+$\norm{(x_1,x_2)}=\abs{x_1-x_2}+\abs{x_1+x_2}+\abs{x_2}$.
+
+\subsection*{(a) Norm? \hfill (6 P.)}
+\textbf{Ja.} Def.~1.4.1 (i)--(iii):
+\begin{itemize}[leftmargin=1.6em,itemsep=1pt]
+\item \emph{Definitheit:} $\norm{x}\ge0$. Aus $\norm{x}=0$ folgt $\abs{x_2}=0$, also
+$x_2=0$, und dann $\abs{x_1}=0$, also $x_1=0$.
+\item \emph{Homogenität:} $\norm{\alpha x}=\abs{\alpha x_1-\alpha x_2}+\abs{\alpha x_1+\alpha x_2}+\abs{\alpha x_2}
+=\abs{\alpha}\norm{x}$.
+\item \emph{Dreiecksungleichung:} Mit den linearen Funktionalen
+$\ell_1(x)=x_1-x_2$, $\ell_2(x)=x_1+x_2$, $\ell_3(x)=x_2$ ist
+$\norm{x}=\sum_i\abs{\ell_i(x)}$ und
+$\abs{\ell_i(x+y)}\le\abs{\ell_i(x)}+\abs{\ell_i(y)}$; Summation liefert
+$\norm{x+y}\le\norm{x}+\norm{y}$.
+\end{itemize}
+Also ist $\norm{\cdot}$ eine Norm.
+
+\subsection*{(b) Konstanten \hfill (4 P.)}
+Wegen $\abs{x_1-x_2}+\abs{x_1+x_2}=2\max\{\abs{x_1},\abs{x_2}\}$ gilt mit
+$M:=\max\{\abs{x_1},\abs{x_2}\}$:
+\[
+  \norm{x}=2M+\abs{x_2}.
+\]
+\emph{Oben:} $M\le\norm{x}_2,\ \abs{x_2}\le\norm{x}_2
+\Rightarrow \norm{x}\le2\norm{x}_2+\norm{x}_2=3\norm{x}_2$.
+
+\emph{Unten:} Fall $\abs{x_1}\ge\abs{x_2}$:
+$\norm{x}=2\abs{x_1}+\abs{x_2}$ und
+\[
+  \norm{x}^2-4\norm{x}_2^2=4\abs{x_1}\abs{x_2}-3x_2^2
+  =\abs{x_2}\underbrace{(4\abs{x_1}-3\abs{x_2})}_{\ge0}\ge0 .
+\]
+Fall $\abs{x_2}\ge\abs{x_1}$: $\norm{x}=3\abs{x_2}$ und
+$\norm{x}^2-4\norm{x}_2^2=5x_2^2-4x_1^2\ge x_1^2\ge0$.
+Also stets $\norm{x}\ge2\norm{x}_2$.
+
+Somit ist $\boxed{c_1=2,\ c_2=3}$ zulässig. Sie sind optimal, da
+$\norm{(1,0)}=2\norm{(1,0)}_2$ und $\norm{(0,1)}=3\norm{(0,1)}_2$.
+
+% =====================================================================
+\section*{Aufgabe 2}
+
+\noindent
+$X=\R^3$, $\norm{x}=\norm{(x_2,x_3)}_{\R^2}+\norm{x_1}_{\R}$, $x=(x_1,x_2,x_3)$.
+
+\subsection*{(a) Normierter Raum \hfill (7 P.)}
+$X$ ist ein reeller Vektorraum. Mit $u=(x_2,x_3)$, $v=(y_2,y_3)$:
+\begin{itemize}[leftmargin=1.6em,itemsep=1pt]
+\item $\norm{x}\ge0$, und
+$\norm{x}=0\Leftrightarrow\norm{u}_{\R^2}=0\wedge\norm{x_1}_{\R}=0
+\Leftrightarrow u=0\wedge x_1=0\Leftrightarrow x=0$.
+\item $\norm{\alpha x}=\norm{\alpha u}_{\R^2}+\norm{\alpha x_1}_{\R}
+=\abs{\alpha}\norm{u}_{\R^2}+\abs{\alpha}\norm{x_1}_{\R}=\abs{\alpha}\norm{x}$.
+\item $\norm{x+y}=\norm{u+v}_{\R^2}+\norm{x_1+y_1}_{\R}
+\le\norm{u}_{\R^2}+\norm{v}_{\R^2}+\norm{x_1}_{\R}+\norm{y_1}_{\R}=\norm{x}+\norm{y}$.
+\end{itemize}
+Also ist $(X,\norm{\cdot})$ ein normierter Raum.
+
+\subsection*{(b) Äquivalent zu $\nz$? \hfill (3 P.)}
+\textbf{Ja.} Da $\R^3$ endlichdimensional ist, sind je zwei Normen äquivalent
+(Satz~1.5.11; vgl.\ Hilfssatz~1.5.10). Explizit: Nach Hilfssatz~1.5.10 gibt es
+$a,b>0$ mit $a\norm{u}_2\le\norm{u}_{\R^2}\le b\norm{u}_2$; ferner
+$\norm{x_1}_{\R}=c\abs{x_1}$ mit $c=\norm{1}_{\R}>0$. Dann
+\[
+  \norm{x}\le b\norm{u}_2+c\abs{x_1}\le\max\{b,c\}\sqrt2\,\norm{x}_2,
+  \qquad
+  \norm{x}\ge a\norm{u}_2+c\abs{x_1}\ge\min\{a,c\}\,\norm{x}_2 .
+\]
+
+% =====================================================================
+\section*{Aufgabe 3}
+
+\noindent
+$X=\{f\in C(\R):\lim_{\abs{x}\to\infty}\abs{f(x)}=0\}$.
+
+\subsection*{(a) Normierter Raum \hfill (5 P.)}
+\emph{$X$ ist Unterraum von $C(\R)$:} $f+\alpha g$ ist stetig, und
+$\abs{f+\alpha g}\le\abs{f}+\abs{\alpha}\abs{g}\to0$ für $\abs{x}\to\infty$.
+
+\emph{Jedes $f\in X$ ist beschränkt:} zu $\varepsilon=1$ gibt es $R>0$ mit
+$\abs{f(x)}<1$ für $\abs{x}>R$; auf $[-R,R]$ ist $f$ beschränkt, etwa
+$\abs{f}\le M$. Also $\ninf(f)\le\max\{M,1\}<\infty$, d.\,h.\ $X\subseteq B(\R)$.
+
+Nach Beispiel~1.4.3(1) ist $\ninf$ eine Norm auf $B(\R)$; die Einschränkung auf
+den Unterraum $X$ ist daher eine Norm auf $X$.
+
+\subsection*{(b) Banachraum? \hfill (5 P.)}
+\textbf{Ja.} $(B(\R),\ninf)$ ist nach Beispiel~1.5.19(i) vollständig. Wir zeigen:
+$X$ ist abgeschlossen in $B(\R)$. Sei $(f_n)\subseteq X$ mit
+$\norm{f_n-f}_\infty\to0$, $f\in B(\R)$.
+
+\emph{$f$ stetig:} zu $x_0,\varepsilon$ wähle $n$ mit
+$\norm{f_n-f}_\infty<\tfrac\varepsilon3$ und $\delta$ mit
+$\abs{f_n(x)-f_n(x_0)}<\tfrac\varepsilon3$ für $\abs{x-x_0}<\delta$; dann
+\[
+  \abs{f(x)-f(x_0)}\le\abs{f-f_n}(x)+\abs{f_n(x)-f_n(x_0)}+\abs{f_n(x_0)-f(x_0)}
+  <\tfrac\varepsilon3+\tfrac\varepsilon3+\tfrac\varepsilon3=\varepsilon .
+\]
+\emph{$f$ verschwindet im Unendlichen:} zu $\varepsilon$ wähle $n$ mit
+$\norm{f_n-f}_\infty<\tfrac\varepsilon2$ und $R$ mit $\abs{f_n(x)}<\tfrac\varepsilon2$
+für $\abs{x}>R$; dann $\abs{f(x)}\le\abs{f-f_n}(x)+\abs{f_n(x)}<\varepsilon$.
+
+Also $f\in X$, d.\,h.\ $X$ abgeschlossen. Ein abgeschlossener Unterraum eines
+Banachraums ist vollständig, also ist $(X,\ninf)$ ein Banachraum.
+
+% =====================================================================
+\section*{Aufgabe 4}
+
+\noindent
+$X=C[a,b]$, $g\in C^1[a,b]$, $g\ge0$, $g'>0$, $\norm{f}_X=\int_a^b g(x)\abs{f(x)}\dm x$.
+
+\subsection*{(a) $x\mapsto\abs{f(x)}$ stetig \hfill (4 P.)}
+Für $f\in C[a,b]$ und $x_0\in[a,b]$ gilt
+$\bigl\lvert\abs{f(x)}-\abs{f(x_0)}\bigr\rvert\le\abs{f(x)-f(x_0)}$.
+Da $f$ in $x_0$ stetig ist, gibt es zu $\varepsilon>0$ ein $\delta>0$ mit
+$\abs{f(x)-f(x_0)}<\varepsilon$ für $\abs{x-x_0}<\delta$, also
+$\bigl\lvert\abs{f(x)}-\abs{f(x_0)}\bigr\rvert<\varepsilon$. Somit ist
+$\abs{f}$ stetig ($\abs{f}=\abs{\cdot}\circ f$).
+
+\subsection*{(b) $\norm{\cdot}_X$ ist eine Norm \hfill (6 P.)}
+$g\abs{f}$ ist stetig, also integrierbar (Wohldefiniertheit).
+
+\begin{itemize}[leftmargin=1.6em,itemsep=1pt]
+\item \emph{Definitheit:} $\norm{f}_X\ge0$, $\norm{0}_X=0$. Sei
+$\norm{f}_X=0$. Dann ist $h=g\abs{f}\ge0$ stetig mit $\int h=0$, also $h\equiv0$
+(sonst wäre $h>0$ auf einem Intervall). Wegen $g'>0$ ist $g$ streng monoton
+wachsend, also $g>0$ auf $(a,b]$. Damit $f(x)=0$ für $x\in(a,b]$ und mit der
+Stetigkeit $f(a)=0$; d.\,h.\ $f\equiv0$.
+\item \emph{Homogenität:}
+$\norm{\alpha f}_X=\int g\abs{\alpha f}=\abs{\alpha}\int g\abs{f}=\abs{\alpha}\norm{f}_X$.
+\item \emph{Dreiecksungleichung:}
+$\norm{f+h}_X=\int g\abs{f+h}\le\int g(\abs{f}+\abs{h})
+=\int g\abs{f}+\int g\abs{h}=\norm{f}_X+\norm{h}_X$.
+\end{itemize}
+Damit ist $\norm{\cdot}_X$ eine Norm auf $X$.
+
+\end{document}
